@@ -6,4 +6,5 @@ Dockerfile
 .gitignore
 __pycache__/
 venv/
+persist/
 

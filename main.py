@@ -9,12 +9,18 @@ import os
 import requests
 
 total_jokes = parser.main()
+
+if os.path.exists("./persist"):
+    ...
+else:
+    os.mkdir("persist")
+
 used = []
-if os.path.exists("used.pkl"):
-    with open("used.pkl", "rb") as file:
+if os.path.exists("persist/used.pkl"):
+    with open("persist/used.pkl", "rb") as file:
         used = pickle.load(file)
 else:
-    with open("used.pkl", "wb") as file:
+    with open("persist/used.pkl", "wb") as file:
         pickle.dump(used, file)
 
 logging.basicConfig(encoding='utf-8', level=logging.INFO)
@@ -49,7 +55,7 @@ def select_anekdot(i: int):
 
 if __name__ == "__main__":
     for i in range(1, total_jokes + 1):
-        with open("used.pkl", "wb") as file:
+        with open("persist/used.pkl", "wb") as file:
             pickle.dump(used, file)
         number = random.randint(1, total_jokes + 1)
 
@@ -60,5 +66,5 @@ if __name__ == "__main__":
 
         used.append(number)
         select_anekdot(number)
-        time.sleep(10)
+        time.sleep(6*60*60)
 
