@@ -29,7 +29,7 @@ class Channel:
 
 
 def select_anekdot(i: int):
-    tele = Channel(config.token, "@telescks")
+    tele = Channel(config.token, "@anekdotiproshtirlitza")
     db = sqlite3.connect("anekdoti.db")
     cursor = db.cursor()
     cursor.execute("SELECT * from Anekdoti WHERE id=?", (i,))
