@@ -8,7 +8,6 @@ urls = [
         "https://www.anekdot.ru/tags/%D0%A8%D1%82%D0%B8%D1%80%D0%BB%D0%B8%D1%86/3", 
         "https://www.anekdot.ru/tags/%D0%A8%D1%82%D0%B8%D1%80%D0%BB%D0%B8%D1%86/4"
 ]
-total_jokes = 0
 
 def parse(urls):
     jokes = []
@@ -25,8 +24,7 @@ def parse(urls):
     return jokes
 
 
-def main() -> None:
-    global total_jokes
+def main(): 
     jokes = parse(urls)
     total_jokes = len(jokes)
     db = sqlite3.connect("anekdoti.db")
@@ -39,9 +37,9 @@ def main() -> None:
 
     db.commit()
     db.close()
+    return total_jokes
 
 
 if __name__ == "__main__":
     main()
-    print(total_jokes)
 

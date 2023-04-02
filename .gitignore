@@ -1,5 +1,6 @@
 *.txt
 !requirements.txt
 venv/
+config.py
 *.db
 __pycache__
