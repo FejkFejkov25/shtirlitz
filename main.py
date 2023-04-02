@@ -2,11 +2,11 @@ import parser
 import sqlite3
 import config
 import datetime
+import random
 import time
 import requests
 
 total_jokes = parser.main()
-today = datetime.date.today()
 
 class Channel:
     url = "https://api.telegram.org/bot"
@@ -34,11 +34,10 @@ def select_anekdot(i: int):
 
 
 if __name__ == "__main__":
-    for i in range(1, 5):
-        today = datetime.date.today()
-        magic_number = (today.year - 2020) * 365 + (today.month - 1) * 30 + today.day
-
-        # select_anekdot(magic_number % total_jokes + 1)
-        print(magic_number % total_jokes + 1)
+    for i in range(1, 11):
+        number = random.randint(1, total_jokes + 1)
+        # today = datetime.date.today()
+        # magic_number = (today.year - 2020) * 365 + (today.month - 1) * 30 + today.day
+        select_anekdot(number)
         time.sleep(10)
 
