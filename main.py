@@ -66,5 +66,5 @@ if __name__ == "__main__":
 
         used.append(number)
         select_anekdot(number)
-        time.sleep(10)
+        time.sleep(6*60*60)
 
