@@ -1,7 +1,7 @@
 *.txt
 !requirements.txt
 venv/
+persist/
 config.py
-used.pkl
 *.db
 __pycache__
