@@ -1,7 +1,6 @@
 import parser
 import sqlite3
 import config
-import datetime
 import random
 import time
 import requests
@@ -34,10 +33,10 @@ def select_anekdot(i: int):
 
 
 if __name__ == "__main__":
-    for i in range(1, 11):
+    for i in range(1, total_jokes + 1):
         number = random.randint(1, total_jokes + 1)
         # today = datetime.date.today()
         # magic_number = (today.year - 2020) * 365 + (today.month - 1) * 30 + today.day
         select_anekdot(number)
-        time.sleep(10)
+        time.sleep(12*60*60)
 
