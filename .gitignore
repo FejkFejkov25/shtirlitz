@@ -2,5 +2,6 @@
 !requirements.txt
 venv/
 config.py
+used.pkl
 *.db
 __pycache__
