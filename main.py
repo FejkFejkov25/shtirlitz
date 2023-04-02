@@ -2,10 +2,12 @@ import parser
 import sqlite3
 import config
 import random
+import logging
 import time
 import requests
 
 total_jokes = parser.main()
+logging.basicConfig(encoding='utf-8', level=logging.INFO)
 
 class Channel:
     url = "https://api.telegram.org/bot"
@@ -21,14 +23,17 @@ class Channel:
         r = requests.post(self.method, data={"chat_id": self.channel_id, "text": text})
 
         if r.status_code != 200:
-            print("Error!")
+            logging.error("Error!")
+        else:
+            logging.info("Succesful post in channel.")
 
 
 def select_anekdot(i: int):
-    tele = Channel(config.token, "@anekdotiproshtirlitza")
+    tele = Channel(config.token, "@telescks")
     db = sqlite3.connect("anekdoti.db")
     cursor = db.cursor()
     cursor.execute("SELECT * from Anekdoti WHERE id=?", (i,))
+    logging.info(f"Select {i} joke.")
     tele.send_message(cursor.fetchone()[1])
 
 
@@ -38,5 +43,5 @@ if __name__ == "__main__":
         # today = datetime.date.today()
         # magic_number = (today.year - 2020) * 365 + (today.month - 1) * 30 + today.day
         select_anekdot(number)
-        time.sleep(12*60*60)
+        time.sleep(10)
 
