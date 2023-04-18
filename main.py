@@ -8,6 +8,7 @@ import time
 import os
 import requests
 
+# INITIALISE VARIABLES
 total_jokes = parser.main()
 
 if os.path.exists("./persist"):
@@ -25,6 +26,7 @@ else:
 
 logging.basicConfig(encoding='utf-8', level=logging.INFO)
 
+# Class that post in channel
 class Channel:
     url = "https://api.telegram.org/bot"
 
